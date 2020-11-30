@@ -5,14 +5,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.*;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
+@Table(name = "course")
 public class Course {
 
-    // @NotEmpty(message="The subjectcode cannot be empty")
-    private String subjectcode;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "subject_code")
+    private int code; //과목코드
 
     //@NotNull(message="The year cannot be empty")
     private int year;

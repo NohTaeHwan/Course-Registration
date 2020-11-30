@@ -14,5 +14,11 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping(value = "/test",method = RequestMethod.GET)
+    public String testing (Model model){
+
+        return "test";
+    }
+
 
 }
