@@ -18,17 +18,18 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/test"/>">
+                <a class="nav-link" href="<c:url value="/showCourse"/>">
                     <span data-feather="file"></span>
-                    Test
+                    교과목 조회
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<c:url value="/test"/>">
                     <span data-feather="shopping-cart"></span>
-                    Products
+                    Test
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="users"></span>
@@ -49,6 +50,7 @@
             </li>
         </ul>
 
+        <!--
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Saved reports</span>
             <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
@@ -81,5 +83,7 @@
                 </a>
             </li>
         </ul>
+
+        -->
     </div>
 </nav>

@@ -12,10 +12,10 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @RequestMapping(value = "/courses")
+    @RequestMapping(value = "/showCourse")
     public String getCourses(Model model){
 
-        return null;
+        return "showCourse";
     }
 
 
