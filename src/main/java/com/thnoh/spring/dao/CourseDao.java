@@ -25,7 +25,6 @@ public class CourseDao {
         List<Course> courseList = query.list();
 
         return courseList;
-
     }
 
 }

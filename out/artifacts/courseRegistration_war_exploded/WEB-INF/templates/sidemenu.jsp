@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/showCourse"/>">
+                <a class="nav-link" href="<c:url value="/showSubjects"/>">
                     <span data-feather="file"></span>
                     교과목 조회
                 </a>
@@ -50,7 +50,7 @@
             </li>
         </ul>
 
-        <!--
+        <!-- TODO admin menu
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Saved reports</span>
             <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">

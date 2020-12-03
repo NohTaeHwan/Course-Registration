@@ -7,15 +7,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class CourseController {
+public class ShowSubjectController {
 
     @Autowired
     private CourseService courseService;
 
-    @RequestMapping(value = "/showCourse")
-    public String getCourses(Model model){
+    @RequestMapping(value = "/showSubjects")
+    public String showSubjects(Model model){
 
-        return "showCourse";
+        return "showSubjects";
     }
 
 
