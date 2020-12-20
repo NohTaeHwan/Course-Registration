@@ -5,10 +5,13 @@ import com.thnoh.spring.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -24,7 +27,7 @@ public class CourseRestController {
      *
      * @return ResponseEntity { courseList , status code : 200 }
      */
-    @RequestMapping(value = "/course",method = RequestMethod.GET)
+    @RequestMapping(value = "/courses",method = RequestMethod.GET)
     public ResponseEntity<List<Course>> getAllCourses(){
 
         List<Course> courses = courseService.getCourses();
@@ -37,8 +40,40 @@ public class CourseRestController {
         return new ResponseEntity<>(courses,HttpStatus.OK);
     }
 
+    /**
+     * Method : POST
+     * get specific courses
+     *
+     * @param course (@RequestBody)
+     * @return ResponseEntity(filteredCourses , status 200)
+     */
+    @RequestMapping(value = "/courses",method = RequestMethod.POST)
+    public ResponseEntity<List<Course>> getFilteredCourses(@RequestBody Course course){
 
+        int year = course.getYear();
+        int semester = course.getSemester();
+        String division = course.getDivision();
 
+        //System.out.println("연도 : "+year + " 학기 : "+ semester + " 학과 : "+division);
+
+        if(division.equals("NONE")){
+            System.out.println("[error] please select division");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        List<Course> courses = courseService.getCourses();
+        //리턴할 filtering된 교과목 리스트
+        List<Course> filteredCourses = new ArrayList<>();
+
+        //학기 , 연도 , 학과가 같다면 filteredCourses 에 추가.
+        for(Course element : courses){
+            if(element.getDivision().equals(division) && element.getSemester()==semester && element.getYear() == year){
+                filteredCourses.add(element);
+            }
+        }
+
+        return new ResponseEntity<>(filteredCourses,HttpStatus.OK);
+    }
 
 }
 
