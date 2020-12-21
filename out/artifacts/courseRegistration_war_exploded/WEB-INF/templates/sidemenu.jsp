@@ -61,7 +61,7 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/admin/adminCourse"/>">
+                <a class="nav-link" href="<c:url value="/admin/showCourse"/>">
                     <span data-feather="file-text"></span>
                     교과목 관리
                 </a>

@@ -3,6 +3,7 @@ package com.thnoh.spring.controller;
 import com.thnoh.spring.model.Course;
 import com.thnoh.spring.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -86,20 +87,22 @@ public class CourseRestController {
     /**
      ******** Create Course
      *
-     * TODO CourseService, CourseDao 까지 createCourse 확장
+     * TODO 새로 만든 교과목이 중복인지 체크하는 로직
+     * TODO form에서 적절치 못한 값은 추가되지 못하도록 해야함. 그리고 학기는 콤보박스로 구성되는게 좋겠음.
      *
      * @param course
      * @param uriBuilder
      * @return
      */
     @RequestMapping(value = "/courses",method = RequestMethod.POST)
-    public ResponseEntity<Course> createCourse(@RequestBody Course course,
+    public ResponseEntity<Void> createCourse(@RequestBody Course course,
                                                UriComponentsBuilder uriBuilder){
 
+        courseService.createCourse(course);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(uriBuilder.path("/course_api/courses/{id}").buildAndExpand(course.getCode()).toUri());
 
-
-
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(headers,HttpStatus.CREATED);
     }
 
 }

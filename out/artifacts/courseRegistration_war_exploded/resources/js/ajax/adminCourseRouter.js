@@ -8,6 +8,7 @@ $(document).ready(function () {
      * 1. page load : get all courses
      * 2. setup error msg
      */
+    /*
     $.ajaxSetup({
         error: function(jqXHR, exception) {
             if (jqXHR.status === 0) {
@@ -44,7 +45,7 @@ $(document).ready(function () {
                 alert('Uncaught Error.n' + jqXHR.responseText);
             }
         }
-    });
+    });*/
 
     $.ajax({
         url: '/course_api/courses',
@@ -53,11 +54,13 @@ $(document).ready(function () {
         dataType: "json",
         success: function(data){
             $('#courses').empty();
+
+
             if(data != null){
                 var content = [];
 
                 for(var i=0; i<data.length; i++){
-                    var id = JSON.stringify(data[i].id);
+                    var id = JSON.stringify(data[i].code);
 
                     content.push("<tr>");
                     content.push("<td>" + JSON.stringify(data[i].year) +"</td>");
@@ -65,9 +68,8 @@ $(document).ready(function () {
                     content.push("<td>" + JSON.stringify(data[i].division).replace(/\"/gi, "") +"</td>");
                     content.push("<td>" + JSON.stringify(data[i].credit) +"</td>");
                     content.push("<td>" + JSON.stringify(data[i].subject).replace(/\"/gi, "") +"</td>");
-                    content.push("<td>"
-                        +"<a class='showDetails' id='"+id+"' href='#'>"+"<i class=\"fas fa-info-circle\"></i>"+"</a>"
-                        +"</td>");
+                    content.push("<td>" + "<a class='editCourse' id='"+id+"' href='#'>"+"<i class=\"fas fa-edit\"></i>"+"</a>"
+                            + "<a class='deleteCourse' id='"+id+"' href='#'>"+"<i class=\"fas fa-times\"></i>"+"</a>" + "</td>");
                     content.push("</tr>");
                 }
 
@@ -78,3 +80,46 @@ $(document).ready(function () {
     });
 
 });
+
+$('#create_course').on('click',function () {
+
+    var formData = $('#addForm').serializeObject();
+
+    $.ajax({
+        url: '/course_api/courses',
+        type: "POST",
+        data: JSON.stringify(formData) ,
+        contentType: "application/json; charset=utf-8;",
+        success:function () {
+            alert("추가 성공");
+            location.href = "/admin/showCourse";
+        },
+        error:function (error) {
+            alert("추가 실패");
+            console.log(error);
+        }
+    });
+
+});
+
+
+/**
+ * data -> json parse 함수
+ *
+ * @returns json parsed data
+ */
+jQuery.fn.serializeObject = function() {
+    var obj = null;
+    try {
+        if(this[0].tagName && this[0].tagName.toUpperCase() == "FORM" ) {
+            var arr = this.serializeArray();
+            if(arr){ obj = {};
+                jQuery.each(arr, function() {
+                    obj[this.name] = this.value; });
+            }
+        }
+    }catch(e) {
+        alert(e.message);
+    }finally {}
+    return obj;
+};

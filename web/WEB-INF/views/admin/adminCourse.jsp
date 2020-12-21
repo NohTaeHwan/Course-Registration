@@ -30,8 +30,8 @@
 
             </tbody>
         </table>
-        <button id="create_course_btn" class="btn btn-primary">생성</button>
+        <a href="<c:url value="/admin/addCourse"/>" class="btn btn-success">추가</a>
     </div>
 </main>
 
-<script src="<c:url value="/resources/js/ajax/adminCourseRouter.js?ver=1"/>"></script>
+<script src="<c:url value="/resources/js/ajax/adminCourseRouter.js?ver=2"/>"></script>

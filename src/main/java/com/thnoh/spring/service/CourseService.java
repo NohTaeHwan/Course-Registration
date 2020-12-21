@@ -17,4 +17,9 @@ public class CourseService {
         return courseDao.getCourses();
     }
 
+    public Course getCourseById(int id){ return courseDao.getCourseById(id); }
+
+    public void createCourse(Course course) {
+        courseDao.createCourse(course);
+    }
 }

@@ -16,12 +16,21 @@ public class AdminController {
     @Autowired
     private CourseService courseService;
 
-    @RequestMapping(value = "/adminCourse")
+    @RequestMapping(value = "/showCourse")
     public String adminCourse(Model model){
 
         //List<Course> courses = courseService.getCourses();
         //model.addAttribute("courses",courses);
 
         return "adminCourse";
+    }
+
+    @RequestMapping(value = "/addCourse")
+    public String addCourse(Model model){
+
+        Course course = new Course();
+        model.addAttribute("course",course);
+
+        return "addCourse";
     }
 }

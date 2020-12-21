@@ -27,4 +27,19 @@ public class CourseDao {
         return courseList;
     }
 
+
+    public Course getCourseById(int id) {
+
+        Session session = sessionFactory.getCurrentSession();
+        Course course = session.get(Course.class,id);
+
+        return course;
+    }
+
+    public void createCourse(Course course) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(course);
+        session.flush();
+    }
 }
