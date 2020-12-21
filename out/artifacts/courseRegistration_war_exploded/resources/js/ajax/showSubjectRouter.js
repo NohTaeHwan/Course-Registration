@@ -1,11 +1,13 @@
 /**
- * GET
- *
- * 1. page load : get all courses
- * 2. setup error msg
+ * 교과목 조회 router
  */
 $(document).ready(function () {
-
+    /**
+     * GET
+     *
+     * 1. page load : get all courses
+     * 2. setup error msg
+     */
     $.ajaxSetup({
         error: function(jqXHR, exception) {
             if (jqXHR.status === 0) {
@@ -71,7 +73,6 @@ $(document).ready(function () {
 
                 $('#courses').append(content);
             }
-
         }
     });
 
@@ -92,7 +93,7 @@ $('#search_subject_btn').on('click',function () {
     console.log("학과 : " + formData["division"]);
     
     $.ajax({
-        url : '/course_api/courses',
+        url : '/course_api/spec_courses',
         type : "POST",
         data : JSON.stringify(formData),
         contentType : "application/json; charset=utf-8;",

@@ -9,11 +9,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * CourseRestController
+ *
+ * 1. course 조회(all)
+ * 2. course 조회(year,semester,division)
+ *
+ */
 @RestController
 @RequestMapping("/course_api")
 public class CourseRestController {
@@ -47,7 +55,7 @@ public class CourseRestController {
      * @param course (@RequestBody)
      * @return ResponseEntity(filteredCourses , status 200)
      */
-    @RequestMapping(value = "/courses",method = RequestMethod.POST)
+    @RequestMapping(value = "/spec_courses",method = RequestMethod.POST)
     public ResponseEntity<List<Course>> getFilteredCourses(@RequestBody Course course){
 
         int year = course.getYear();
@@ -73,6 +81,25 @@ public class CourseRestController {
         }
 
         return new ResponseEntity<>(filteredCourses,HttpStatus.OK);
+    }
+
+    /**
+     ******** Create Course
+     *
+     * TODO CourseService, CourseDao 까지 createCourse 확장
+     *
+     * @param course
+     * @param uriBuilder
+     * @return
+     */
+    @RequestMapping(value = "/courses",method = RequestMethod.POST)
+    public ResponseEntity<Course> createCourse(@RequestBody Course course,
+                                               UriComponentsBuilder uriBuilder){
+
+
+
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

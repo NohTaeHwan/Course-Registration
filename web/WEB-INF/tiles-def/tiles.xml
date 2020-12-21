@@ -25,4 +25,9 @@
         <put-attribute name="title" value="교과목 조회" />
         <put-attribute name="body" value="/WEB-INF/views/showSubjects.jsp" />
     </definition>
+
+    <definition name="adminCourse" extends="base">
+        <put-attribute name="title" value="교과목 관리" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/adminCourse.jsp" />
+    </definition>
 </tiles-definitions>

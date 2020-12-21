@@ -26,14 +26,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/test"/>">
                     <span data-feather="shopping-cart"></span>
-                    Test
+                    수강신청 장바구니
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="users"></span>
-                    Customers
+                    수강 신청한 과목
                 </a>
             </li>
             <li class="nav-item">
@@ -50,40 +50,30 @@
             </li>
         </ul>
 
-        <!-- TODO admin menu
+        <!-- TODO admin menu -->
+
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Saved reports</span>
+            <span>관리자 페이지</span>
+            <!--
             <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
                 <span data-feather="plus-circle"></span>
-            </a>
+            </a> -->
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<c:url value="/admin/adminCourse"/>">
                     <span data-feather="file-text"></span>
-                    Current month
+                    교과목 관리
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    Last quarter
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    Social engagement
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    Year-end sale
+                    <span data-feather="users"></span>
+                    유저 관리
                 </a>
             </li>
         </ul>
 
-        -->
+
     </div>
 </nav>
