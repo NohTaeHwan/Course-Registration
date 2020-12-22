@@ -22,4 +22,8 @@ public class CourseService {
     public void createCourse(Course course) {
         courseDao.createCourse(course);
     }
+
+    public void deleteCourse(Course course) {
+        courseDao.deleteCourse(course);
+    }
 }

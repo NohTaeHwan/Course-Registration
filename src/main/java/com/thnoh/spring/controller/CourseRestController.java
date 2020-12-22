@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
@@ -103,6 +100,16 @@ public class CourseRestController {
         headers.setLocation(uriBuilder.path("/course_api/courses/{id}").buildAndExpand(course.getCode()).toUri());
 
         return new ResponseEntity<>(headers,HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/courses/{id}",method = RequestMethod.DELETE)
+    public ResponseEntity<Course> deleteCourseById(@PathVariable("id") int id){
+
+        Course course = courseService.getCourseById(id);
+        courseService.deleteCourse(course);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
     }
 
 }

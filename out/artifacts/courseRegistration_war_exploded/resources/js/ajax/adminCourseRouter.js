@@ -55,7 +55,6 @@ $(document).ready(function () {
         success: function(data){
             $('#courses').empty();
 
-
             if(data != null){
                 var content = [];
 
@@ -81,6 +80,10 @@ $(document).ready(function () {
 
 });
 
+/**
+ * POST : Create Course
+ * uri : /course_api/courses
+ */
 $('#create_course').on('click',function () {
 
     var formData = $('#addForm').serializeObject();
@@ -102,6 +105,33 @@ $('#create_course').on('click',function () {
 
 });
 
+/**
+ * DELETE : delete course by id
+ * uri : /course_api/courses/{id}
+ *
+ */
+$('#courses').on('click',"a.deleteCourse",function () {
+
+    var id = $(this).attr("id");
+
+    console.log(id);
+
+    $.ajax({
+        url: '/course_api/courses/'+id,
+        type: "DELETE",
+        contentType: "application/json; charset=utf-8;",
+        dataType: "json",
+        success: function(data){
+            alert("삭제 성공");
+            location.href = "/admin/showCourse";
+        },
+        error:function (error) {
+            alert("삭제 실패");
+            console.log(error);
+        }
+    });
+
+});
 
 /**
  * data -> json parse 함수

@@ -42,4 +42,11 @@ public class CourseDao {
         session.saveOrUpdate(course);
         session.flush();
     }
+
+    public void deleteCourse(Course course) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(course);
+        session.flush();
+    }
 }
