@@ -74,14 +74,27 @@
                 <th>학과</th>
                 <th>학점</th>
                 <th>과목명</th>
-                <th>상세정보</th> <!-- TODO add btn : view details-->
+                <th>상세정보</th>
             </tr>
             </thead>
             <tbody id="courses">
-
+                <c:forEach var="course" items="${courses}">
+                    <tr>
+                        <td> ${course.year} </td>
+                        <td> ${course.semester} </td>
+                        <td> ${course.division} </td>
+                        <td> ${course.credit} </td>
+                        <td> ${course.subject} </td>
+                        <td>
+                            <a class="show_details" id="${course.code}" href="#">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>
 </main>
 
-<script src="<c:url value="/resources/js/ajax/showSubjectRouter.js?ver=2"/>"></script>
+<script src="<c:url value="/resources/js/ajax/showSubjectRouter.js"/>"></script>

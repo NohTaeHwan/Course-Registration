@@ -22,9 +22,11 @@ public class ShowSubjectController {
         Course course = new Course();
         model.addAttribute("course",course);
 
+
+
         //select 속성에 담을 model
-        //TODO 속성중 중복 값을 제거해야함
         List<Course> courses = courseService.getCourses();
+        model.addAttribute("courses",courses);
 
         //연도 ,학기 ,학과
         Set<Integer> years = new HashSet<>();
