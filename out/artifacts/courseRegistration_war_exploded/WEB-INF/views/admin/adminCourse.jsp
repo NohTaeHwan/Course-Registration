@@ -23,11 +23,27 @@
                 <th>학과</th>
                 <th>학점</th>
                 <th>과목명</th>
-                <th>상세정보</th> <!-- TODO add btn : view details-->
+                <th>관리</th>
             </tr>
             </thead>
-            <tbody id="courses">
-
+            <tbody>
+                <c:forEach var="course" items="${courses}">
+                    <tr>
+                        <td> ${course.year} </td>
+                        <td> ${course.semester} </td>
+                        <td> ${course.division} </td>
+                        <td> ${course.credit} </td>
+                        <td> ${course.subject} </td>
+                        <td>
+                            <a href="<c:url value="/admin/updateCourse/${course.code}"/>">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="delete_course" id="${course.code}" href="#"/>
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
         <a href="<c:url value="/admin/addCourse"/>" class="btn btn-success">추가</a>

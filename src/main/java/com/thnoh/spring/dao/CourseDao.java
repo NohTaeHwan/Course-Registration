@@ -49,4 +49,11 @@ public class CourseDao {
         session.delete(course);
         session.flush();
     }
+
+    public void updateCourse(Course course) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(course);
+        session.flush();
+    }
 }

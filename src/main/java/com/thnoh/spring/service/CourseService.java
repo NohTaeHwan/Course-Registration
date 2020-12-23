@@ -19,11 +19,11 @@ public class CourseService {
 
     public Course getCourseById(int id){ return courseDao.getCourseById(id); }
 
-    public void createCourse(Course course) {
-        courseDao.createCourse(course);
-    }
+    public void createCourse(Course course) { courseDao.createCourse(course); }
 
     public void deleteCourse(Course course) {
         courseDao.deleteCourse(course);
     }
+
+    public void updateCourse(Course course) { courseDao.updateCourse(course); }
 }

@@ -4,8 +4,6 @@
 $(document).ready(function () {
     /**
      * GET
-     *
-     * 1. page load : get all courses
      * 2. setup error msg
      */
     /*
@@ -46,38 +44,6 @@ $(document).ready(function () {
             }
         }
     });*/
-
-    $.ajax({
-        url: '/course_api/courses',
-        type: "GET",
-        contentType: "application/json; charset=utf-8;",
-        dataType: "json",
-        success: function(data){
-            $('#courses').empty();
-
-            if(data != null){
-                var content = [];
-
-                for(var i=0; i<data.length; i++){
-                    var id = JSON.stringify(data[i].code);
-
-                    content.push("<tr>");
-                    content.push("<td>" + JSON.stringify(data[i].year) +"</td>");
-                    content.push("<td>" + JSON.stringify(data[i].semester) +"</td>");
-                    content.push("<td>" + JSON.stringify(data[i].division).replace(/\"/gi, "") +"</td>");
-                    content.push("<td>" + JSON.stringify(data[i].credit) +"</td>");
-                    content.push("<td>" + JSON.stringify(data[i].subject).replace(/\"/gi, "") +"</td>");
-                    content.push("<td>" + "<a class='editCourse' id='"+id+"' href='#'>"+"<i class=\"fas fa-edit\"></i>"+"</a>"
-                            + "<a class='deleteCourse' id='"+id+"' href='#'>"+"<i class=\"fas fa-times\"></i>"+"</a>" + "</td>");
-                    content.push("</tr>");
-                }
-
-                $('#courses').append(content);
-            }
-
-        }
-    });
-
 });
 
 /**
@@ -95,7 +61,7 @@ $('#create_course').on('click',function () {
         contentType: "application/json; charset=utf-8;",
         success:function () {
             alert("추가 성공");
-            location.href = "/admin/showCourse";
+            location.href = "/admin/adminCourse";
         },
         error:function (error) {
             alert("추가 실패");
@@ -110,7 +76,7 @@ $('#create_course').on('click',function () {
  * uri : /course_api/courses/{id}
  *
  */
-$('#courses').on('click',"a.deleteCourse",function () {
+$('.delete_course').on('click',function () {
 
     var id = $(this).attr("id");
 
@@ -123,10 +89,35 @@ $('#courses').on('click',"a.deleteCourse",function () {
         dataType: "json",
         success: function(data){
             alert("삭제 성공");
-            location.href = "/admin/showCourse";
+            location.href = "/admin/adminCourse";
         },
         error:function (error) {
             alert("삭제 실패");
+            console.log(error);
+        }
+    });
+
+});
+
+/**
+ * PUT : update Course
+ * uri : /course_api/courses/{id}
+ */
+$('#update_course').on('click',function () {
+
+    var formData = $('#addForm').serializeObject();
+
+    $.ajax({
+        url: '/course_api/courses/',
+        type: "PUT",
+        data: JSON.stringify(formData) ,
+        contentType: "application/json; charset=utf-8;",
+        success:function () {
+            alert("추가 성공");
+            location.href = "/admin/adminCourse";
+        },
+        error:function (error) {
+            alert("추가 실패");
             console.log(error);
         }
     });

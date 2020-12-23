@@ -9,9 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * CourseRestController
@@ -28,10 +26,12 @@ public class CourseRestController {
     private CourseService courseService;
 
     /**
-     * Method : GET
-     * get all courses
+     ********** GET Courses
      *
-     * @return ResponseEntity { courseList , status code : 200 }
+     * Method : GET
+     * description : get all courses
+     *
+     * @return ResponseEntity(courseList , status 200)
      */
     @RequestMapping(value = "/courses",method = RequestMethod.GET)
     public ResponseEntity<List<Course>> getAllCourses(){
@@ -47,8 +47,10 @@ public class CourseRestController {
     }
 
     /**
+     ********** Get course by condition
+     *
      * Method : POST
-     * get specific courses
+     * description : get course with specific condition
      *
      * @param course (@RequestBody)
      * @return ResponseEntity(filteredCourses , status 200)
@@ -84,12 +86,15 @@ public class CourseRestController {
     /**
      ******** Create Course
      *
+     * method : POST
+     * description : create course
+     *
      * TODO 새로 만든 교과목이 중복인지 체크하는 로직
      * TODO form에서 적절치 못한 값은 추가되지 못하도록 해야함. 그리고 학기는 콤보박스로 구성되는게 좋겠음.
      *
      * @param course
      * @param uriBuilder
-     * @return
+     * @return ResponseEntity(headers , status 201)
      */
     @RequestMapping(value = "/courses",method = RequestMethod.POST)
     public ResponseEntity<Void> createCourse(@RequestBody Course course,
@@ -102,6 +107,14 @@ public class CourseRestController {
         return new ResponseEntity<>(headers,HttpStatus.CREATED);
     }
 
+    /**
+     ******** Delete Course
+     *
+     * method : DELETE
+     * description : delete course by {id}
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/courses/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<Course> deleteCourseById(@PathVariable("id") int id){
 
@@ -110,6 +123,22 @@ public class CourseRestController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
+    }
+
+    /**
+     ********* Update Course
+     *
+     * method : PUT
+     * description : update course
+     *
+     * @param course
+     * @return
+     */
+    @RequestMapping(value = "/courses",method = RequestMethod.PUT)
+    public ResponseEntity<Void> updateCourse(@RequestBody Course course){
+
+        courseService.updateCourse(course);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

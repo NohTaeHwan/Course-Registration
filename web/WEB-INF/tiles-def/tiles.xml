@@ -35,4 +35,9 @@
         <put-attribute name="title" value="교과목 추가" />
         <put-attribute name="body" value="/WEB-INF/views/admin/addCourse.jsp" />
     </definition>
+
+    <definition name="updateCourse" extends="base">
+        <put-attribute name="title" value="교과목 수정" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/updateCourse.jsp" />
+    </definition>
 </tiles-definitions>

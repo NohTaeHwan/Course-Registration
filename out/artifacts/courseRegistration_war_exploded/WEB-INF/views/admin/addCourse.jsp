@@ -42,7 +42,7 @@
         </div>
 
         <input type="button" id="create_course" value="추가" class="btn btn-success">
-        <a href="<c:url value="/admin/showCourse"/>" class="btn btn-dark">취소</a>
+        <a href="<c:url value="/admin/adminCourse"/>" class="btn btn-dark">취소</a>
     </sf:form>
 </main>
 <script src="<c:url value="/resources/js/ajax/adminCourseRouter.js?ver=1"/>"></script>
