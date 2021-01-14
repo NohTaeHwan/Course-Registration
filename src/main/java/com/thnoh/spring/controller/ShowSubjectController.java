@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.*;
 
+/**
+ * Name : ShowSubjectController
+ * Controller Layer
+ *
+ * View 요청 : 교과목 조회
+ */
 @Controller
 public class ShowSubjectController {
 
@@ -21,8 +27,6 @@ public class ShowSubjectController {
         //form으로 만들어줄 비어있는 객체
         Course course = new Course();
         model.addAttribute("course",course);
-
-
 
         //select 속성에 담을 model
         List<Course> courses = courseService.getCourses();
@@ -43,9 +47,7 @@ public class ShowSubjectController {
         model.addAttribute("semesters",semesters);
         model.addAttribute("divisions",divisions);
 
-
         return "showSubjects";
     }
-
 
 }

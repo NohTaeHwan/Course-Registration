@@ -12,7 +12,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.*;
 
 /**
- * CourseRestController
+ * Name : CourseRestController
+ * (Rest)Controller Layer
  *
  * 1. course 조회(all)
  * 2. course 조회(year,semester,division)

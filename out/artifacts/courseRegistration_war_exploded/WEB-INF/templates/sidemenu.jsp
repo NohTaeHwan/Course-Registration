@@ -48,31 +48,43 @@
                     Integrations
                 </a>
             </li>
+
+            <c:if test="${pageContext.request.userPrincipal.name == null}">
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/register"/>">
+                        <span data-feather="users"></span>
+                        회원 가입
+                    </a>
+                </li>
+            </c:if>
+
         </ul>
 
-        <!-- TODO admin menu -->
+        <!-- admin menu -->
+        <c:if test="${pageContext.request.userPrincipal.name == 'admin'}">
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>관리자 페이지</span>
+                <!--
+                <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+                    <span data-feather="plus-circle"></span>
+                </a> -->
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/admin/adminCourse"/>">
+                        <span data-feather="file-text"></span>
+                        교과목 관리
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span data-feather="users"></span>
+                        유저 관리
+                    </a>
+                </li>
+            </ul>
+        </c:if>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>관리자 페이지</span>
-            <!--
-            <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                <span data-feather="plus-circle"></span>
-            </a> -->
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/admin/adminCourse"/>">
-                    <span data-feather="file-text"></span>
-                    교과목 관리
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="users"></span>
-                    유저 관리
-                </a>
-            </li>
-        </ul>
 
 
     </div>

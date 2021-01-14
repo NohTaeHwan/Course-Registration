@@ -15,8 +15,21 @@
     </button>
     <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
     <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
-        </li>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <li class="nav-item text-nowrap">
+                <a class="py-2 d-none d-md-inline-block"
+                   href="javascript:document.getElementById('logout').submit()">Logout</a>
+            </li>
+
+            <form id="logout" action="<c:url value="/logout"/>" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+        </c:if>
+
+        <c:if test="${pageContext.request.userPrincipal.name == null}">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="<c:url value="/login"/>">Sign in</a>
+            </li>
+        </c:if>
     </ul>
 </nav>

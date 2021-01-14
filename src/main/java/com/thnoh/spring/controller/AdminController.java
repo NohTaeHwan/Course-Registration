@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+/**
+ * Name : AdminController
+ * Controller Layer
+ *
+ * View 요청 : 교과목 관리 , 교과목 추가 , 교과목 수정
+ *
+ */
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
@@ -19,13 +20,12 @@ public class Course {
     @Column(name = "subject_code")
     private int code; //과목코드
 
-    //@NotNull(message="The year cannot be empty")
+    //@NotEmpty(message="연도를 입력해주세요")
     private int year;
 
-    //@NotNull(message="The semester cannot be empty")
     private int semester;
 
-    //@NotEmpty(message="The subject cannot be empty")
+    //@NotEmpty(message="과목명을 입력해주세요")
     private String subject;
 
     //@NotEmpty(message="The division cannot be empty")

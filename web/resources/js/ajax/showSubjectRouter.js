@@ -55,6 +55,8 @@ $(document).ready(function () {
 $('#search_subject_btn').on('click',function () {
 
     var formData = $('#search_form').serializeObject();
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
     console.log("연도 :" + formData["year"]);
     console.log("학기 : "+formData["semester"]);
     console.log("학과 : " + formData["division"]);
@@ -65,6 +67,9 @@ $('#search_subject_btn').on('click',function () {
         data : JSON.stringify(formData),
         contentType : "application/json; charset=utf-8;",
         dataType: "json",
+        beforeSend: function(xhr){
+            xhr.setRequestHeader(header,token);
+        },
         success:function (data) {
             $('#courses').empty();
             if(data != null){

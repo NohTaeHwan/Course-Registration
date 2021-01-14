@@ -7,6 +7,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/***
+ * Class : CourseService
+ * Service Layer
+ *
+ * @Autowired : CourseDao
+ */
 @Service
 public class CourseService {
 

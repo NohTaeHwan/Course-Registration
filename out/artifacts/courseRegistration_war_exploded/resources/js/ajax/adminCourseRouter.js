@@ -1,5 +1,6 @@
 /**
  * 교과목 관리 router
+ * 각 호출시에 csrf : header ,token 전송
  */
 $(document).ready(function () {
     /**
@@ -53,12 +54,17 @@ $(document).ready(function () {
 $('#create_course').on('click',function () {
 
     var formData = $('#addForm').serializeObject();
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
 
     $.ajax({
         url: '/course_api/courses',
         type: "POST",
         data: JSON.stringify(formData) ,
         contentType: "application/json; charset=utf-8;",
+        beforeSend: function(xhr){
+            xhr.setRequestHeader(header,token);
+        },
         success:function () {
             alert("추가 성공");
             location.href = "/admin/adminCourse";
@@ -79,6 +85,8 @@ $('#create_course').on('click',function () {
 $('.delete_course').on('click',function () {
 
     var id = $(this).attr("id");
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
 
     console.log(id);
 
@@ -87,6 +95,9 @@ $('.delete_course').on('click',function () {
         type: "DELETE",
         contentType: "application/json; charset=utf-8;",
         dataType: "json",
+        beforeSend: function(xhr){
+            xhr.setRequestHeader(header,token);
+        },
         success: function(data){
             alert("삭제 성공");
             location.href = "/admin/adminCourse";
@@ -106,19 +117,24 @@ $('.delete_course').on('click',function () {
 $('#update_course').on('click',function () {
 
     var formData = $('#addForm').serializeObject();
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
 
     $.ajax({
         url: '/course_api/courses/',
         type: "PUT",
         data: JSON.stringify(formData) ,
         contentType: "application/json; charset=utf-8;",
+        beforeSend: function(xhr){
+            xhr.setRequestHeader(header,token);
+        },
         success:function () {
-            alert("추가 성공");
+            alert("수정 성공");
             location.href = "/admin/adminCourse";
         },
         error:function (error) {
-            alert("추가 실패");
             console.log(error);
+            alert("수정 실패");
         }
     });
 

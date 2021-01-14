@@ -40,4 +40,19 @@
         <put-attribute name="title" value="교과목 수정" />
         <put-attribute name="body" value="/WEB-INF/views/admin/updateCourse.jsp" />
     </definition>
+
+    <definition name="login" extends="base">
+        <put-attribute name="title" value="로그인 창" />
+        <put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+    </definition>
+
+    <definition name="registerUser" extends="base">
+        <put-attribute name="title" value="회원가입 창" />
+        <put-attribute name="body" value="/WEB-INF/views/registerUser.jsp" />
+    </definition>
+
+    <definition name="registerSuccess" extends="base">
+        <put-attribute name="title" value="회원가입 성공" />
+        <put-attribute name="body" value="/WEB-INF/views/registerSuccess.jsp" />
+    </definition>
 </tiles-definitions>

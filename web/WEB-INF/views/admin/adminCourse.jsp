@@ -50,4 +50,4 @@
     </div>
 </main>
 
-<script src="<c:url value="/resources/js/ajax/adminCourseRouter.js?ver=2"/>"></script>
+<script src="<c:url value="/resources/js/ajax/adminCourseRouter.js"/>"></script>

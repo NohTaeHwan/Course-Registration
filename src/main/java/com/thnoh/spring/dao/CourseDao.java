@@ -10,6 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Name : CourseDao
+ * DAO Layer
+ *
+ * 과목 조회 , id로 과목 조회 , 과목 생성, 과목 삭제 , 과목 수정
+ *
+ */
 @Repository
 @Transactional
 public class CourseDao {
@@ -17,6 +24,7 @@ public class CourseDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+    //교과목 전체 조회
     @SuppressWarnings("unchecked")
     public List<Course> getCourses(){
 
@@ -27,7 +35,7 @@ public class CourseDao {
         return courseList;
     }
 
-
+    //id로 교과목 조회
     public Course getCourseById(int id) {
 
         Session session = sessionFactory.getCurrentSession();
@@ -36,6 +44,7 @@ public class CourseDao {
         return course;
     }
 
+    //교과목 생성
     public void createCourse(Course course) {
 
         Session session = sessionFactory.getCurrentSession();
@@ -43,6 +52,7 @@ public class CourseDao {
         session.flush();
     }
 
+    //교과목 삭제
     public void deleteCourse(Course course) {
 
         Session session = sessionFactory.getCurrentSession();
@@ -50,6 +60,7 @@ public class CourseDao {
         session.flush();
     }
 
+    //교과목 수정
     public void updateCourse(Course course) {
 
         Session session = sessionFactory.getCurrentSession();
